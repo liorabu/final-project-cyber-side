@@ -52,8 +52,8 @@ class HomeScreen extends React.Component {
         return (
             <View style={styles.container}>
             <View>
-              {/* <Option text='פרטים אישיים' onPress={() => { this.props.navigation.navigate('UserDetails') }} />
-              <Option text='צור קשר' onPress={() => { this.props.navigation.navigate('Contact') }} />
+              <Option text='מפעלים בתהליך' onPress={() => { this.props.navigation.navigate('Organizations') }} />
+              {/* <Option text='צור קשר' onPress={() => { this.props.navigation.navigate('Contact') }} />
               <Option text='מערכות שהוזנו' onPress={() => { this.props.navigation.navigate('Systems') }} />
               <Option text='הזנת מערכת' onPress={() => { this.props.navigation.navigate('NewSystem') }} /> */}
             </View>

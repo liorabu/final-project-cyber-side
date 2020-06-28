@@ -46,3 +46,11 @@ export async function getDashboardData() {
   let results = { organizations: await organizations.length, systems: await Systems.length, systemsStageOne: await systemsStageOne.length, systemsStageTwo: await systemsStageTwo.length, doneSystems: await doneSystems.length }
   return await results
 }
+
+export async function getOrganizations(){
+  const mongoClient = Stitch.defaultAppClient.getServiceClient(RemoteMongoClient.factory, "mongodb-atlas");
+  const db = mongoClient.db("CyberDefence");
+  const users = db.collection("users");
+ let organizations= await users.find();
+ return await organizations.toArray();
+}

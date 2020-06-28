@@ -6,7 +6,7 @@ import { StyleSheet, Text, View, SafeAreaView } from 'react-native';
 import { UserContext } from './src/contexts/UserContext';
 import HomeScreen from './src/screens/HomeSceen';
 import LoginScreen from './src/screens/LoginScreen';
-
+import OrganiztionsScreen from './src/screens/OrganiztionsScreen';
 
 const Stack = createStackNavigator();
 
@@ -16,22 +16,23 @@ export default function App() {
   // const [userName, setUserName] = React.useState(null);
   // const [systemId, setSystemId] = React.useState(0);
   // const [systemName, setSystemName] = React.useState(null);
-  const value = { userId, setUserId};
+  const value = { userId, setUserId };
 
 
   return (
     <UserContext.Provider value={value}>
-    <SafeAreaView style={{ flex: 1 }}>
+      <SafeAreaView style={{ flex: 1 }}>
 
-    <NavigationContainer>
-      <Stack.Navigator >
-      <Stack.Screen name="Login" component={LoginScreen} options={{ headerShown: false }} />
-        <Stack.Screen name="Home" component={HomeScreen} options={{ title: "חומר אפל", headerTitleAlign: 'center', headerTintColor: '#fff', headerLeft: null, headerStyle: { backgroundColor: '#027DB4' } }} />
-       
-      </Stack.Navigator>
-    </NavigationContainer>
-  </SafeAreaView>
-  </UserContext.Provider>
+        <NavigationContainer>
+          <Stack.Navigator >
+            <Stack.Screen name="Login" component={LoginScreen} options={{ headerShown: false }} />
+            <Stack.Screen name="Home" component={HomeScreen} options={{ title: "חומר אפל", headerTitleAlign: 'center', headerTintColor: '#fff', headerLeft: null, headerStyle: { backgroundColor: '#027DB4' } }} />
+            <Stack.Screen name="Organizations" component={OrganiztionsScreen} options={{ title: "חומר אפל", headerTitleAlign: 'center', headerTintColor: '#fff',  headerStyle: { backgroundColor: '#027DB4' } }} />
+
+          </Stack.Navigator>
+        </NavigationContainer>
+      </SafeAreaView>
+    </UserContext.Provider>
   )
 }
 
