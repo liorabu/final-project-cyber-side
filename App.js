@@ -7,16 +7,17 @@ import { UserContext } from './src/contexts/UserContext';
 import HomeScreen from './src/screens/HomeSceen';
 import LoginScreen from './src/screens/LoginScreen';
 import OrganiztionsScreen from './src/screens/OrganiztionsScreen';
+import OrganizationScreen from './src/screens/OrganizationScreen';
 
 const Stack = createStackNavigator();
 
 export default function App() {
   const [userId, setUserId] = React.useState(0);
-  // const [userId, setUserId] = React.useState(0);
-  // const [userName, setUserName] = React.useState(null);
-  // const [systemId, setSystemId] = React.useState(0);
-  // const [systemName, setSystemName] = React.useState(null);
-  const value = { userId, setUserId };
+  const [orgId, setOrgId] = React.useState(0);
+  const [orgName,setOrgName] = React.useState(null);
+  const [systemId, setSystemId] = React.useState(0);
+  const [systemName, setSystemName] = React.useState(null);
+  const value = { userId, setUserId ,orgId, setOrgId,orgName,setOrgName,systemId, setSystemId,systemName, setSystemName};
 
 
   return (
@@ -28,6 +29,7 @@ export default function App() {
             <Stack.Screen name="Login" component={LoginScreen} options={{ headerShown: false }} />
             <Stack.Screen name="Home" component={HomeScreen} options={{ title: "חומר אפל", headerTitleAlign: 'center', headerTintColor: '#fff', headerLeft: null, headerStyle: { backgroundColor: '#027DB4' } }} />
             <Stack.Screen name="Organizations" component={OrganiztionsScreen} options={{ title: "חומר אפל", headerTitleAlign: 'center', headerTintColor: '#fff',  headerStyle: { backgroundColor: '#027DB4' } }} />
+            <Stack.Screen name="Organization" component={OrganizationScreen} options={{ title: orgName, headerTitleAlign: 'center', headerTintColor: '#fff',  headerStyle: { backgroundColor: '#027DB4' } }} />
 
           </Stack.Navigator>
         </NavigationContainer>

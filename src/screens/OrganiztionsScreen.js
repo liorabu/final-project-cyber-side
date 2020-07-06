@@ -34,13 +34,20 @@ class OrganiztionsScreen extends React.Component {
             if (!result) {
                 return;
             }
-            console.log(result)
             this.setState({
                 organizations: result,
             });
         }).catch(error => {
             console.log('fail', error);
         });
+    }
+
+    //get the Org's data
+    getOrgData = (organization) => {
+        this.context.setOrgId(organization._id);
+        console.log(this.context.orgId)
+        this.context.setOrgName(organization.name);
+        this.props.navigation.navigate('Organization')
     }
 
     render() {
@@ -60,10 +67,12 @@ class OrganiztionsScreen extends React.Component {
                 </View>
                 <ScrollView>
                     {
-                        this.state.organizations.map((item) => {
-                            // this.state.organizations.filter((value) => value.contains(this.state.filter)).map((item) => {
+                        // this.state.organizations.map((item) => {
+                            this.state.organizations.filter((value) => {
+                                return value.name.toUpperCase().includes(this.state.filter.toUpperCase());
+                            }).map((item) => {
                             return (
-                                <Option key={item._id} text={item.name} />
+                                <Option key={item._id} text={item.name}  onPress={() => { this.getOrgData(item)}}/>
                             )
                         })
                     }

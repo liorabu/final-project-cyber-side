@@ -47,10 +47,36 @@ export async function getDashboardData() {
   return await results
 }
 
+//get aray of the organizations
 export async function getOrganizations(){
   const mongoClient = Stitch.defaultAppClient.getServiceClient(RemoteMongoClient.factory, "mongodb-atlas");
   const db = mongoClient.db("CyberDefence");
   const users = db.collection("users");
  let organizations= await users.find();
  return await organizations.toArray();
+}
+
+//get daa of some organization
+export async function getOrgDashboard(orgId) {
+  const mongoClient = Stitch.defaultAppClient.getServiceClient(RemoteMongoClient.factory, "mongodb-atlas");
+  const db = mongoClient.db("CyberDefence");
+  const systems = db.collection("Systems");
+  const performed = db.collection("PerformedControls");
+  let status = "סיום";
+  let userSystems = await systems.find({ userId: orgId }).toArray()
+  let userControls = 0;
+  let doneSystems = await systems.find({ userId: orgId, status: status }).toArray()
+  let performedControls = await performed.find({ userId: orgId }).toArray()
+
+  for (let system of await userSystems) {
+    {
+      !!system.controlsNumber ?
+        userControls = userControls + system.controlsNumber
+        :
+        null
+    }
+  }
+
+  let results = { userSystems: await userSystems.length, doneSystems: await doneSystems.length, performedControls: await performedControls.length, userControls: userControls }
+  return await results
 }
