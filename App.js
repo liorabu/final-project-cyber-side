@@ -8,6 +8,7 @@ import HomeScreen from './src/screens/HomeSceen';
 import LoginScreen from './src/screens/LoginScreen';
 import OrganiztionsScreen from './src/screens/OrganiztionsScreen';
 import OrganizationScreen from './src/screens/OrganizationScreen';
+import SystemsScreen from './src/screens/SystemsScreen';
 
 const Stack = createStackNavigator();
 
@@ -30,6 +31,7 @@ export default function App() {
             <Stack.Screen name="Home" component={HomeScreen} options={{ title: "חומר אפל", headerTitleAlign: 'center', headerTintColor: '#fff', headerLeft: null, headerStyle: { backgroundColor: '#027DB4' } }} />
             <Stack.Screen name="Organizations" component={OrganiztionsScreen} options={{ title: "חומר אפל", headerTitleAlign: 'center', headerTintColor: '#fff',  headerStyle: { backgroundColor: '#027DB4' } }} />
             <Stack.Screen name="Organization" component={OrganizationScreen} options={{ title: orgName, headerTitleAlign: 'center', headerTintColor: '#fff',  headerStyle: { backgroundColor: '#027DB4' } }} />
+            <Stack.Screen name="Systems" component={SystemsScreen} options={{ title: 'מערכות קיימות', headerTitleAlign: 'center', headerTintColor: '#fff', headerStyle: { backgroundColor: '#027DB4' } }} />
 
           </Stack.Navigator>
         </NavigationContainer>

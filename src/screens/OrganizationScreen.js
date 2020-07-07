@@ -15,9 +15,7 @@ class OrganizationScreen extends React.Component {
         const unsubscribeFocus = null;
     }
     componentDidMount() {
-         this.getDashboardData();
-       
-        this.unsubscribeFocus = this.props.navigation.addListener('focus', this.onScreenFocus);
+        this.getDashboardData();
     }
 
     componentWillUnmount() {
@@ -25,10 +23,7 @@ class OrganizationScreen extends React.Component {
             this.unsubscribeFocus();
         }
     }
-    onScreenFocus = () => {
-        // this.loadMyOganizations();
-    }
-
+   
     getDashboardData = ()=>{
         getOrgDashboard(this.context.orgId).then(result => {
             if (!result) {
@@ -50,7 +45,7 @@ class OrganizationScreen extends React.Component {
             <View style={styles.container}>
                 <View>
                     {/* <Option text='מערכות קיימות' onPress={() => { this.props.navigation.navigate('Systems') }} /> */}
-
+                    <Option text='מערכות שהוזנו' onPress={() => { this.props.navigation.navigate('Systems') }} />
                 </View>
                 <View style={styles.dashboard}>
                     <>

@@ -26,7 +26,7 @@ class OrganiztionsScreen extends React.Component {
         }
     }
     onScreenFocus = () => {
-        this.loadMyOganizations();
+        // this.loadMyOganizations();
     }
 
     loadMyOganizations = () => {
@@ -45,14 +45,14 @@ class OrganiztionsScreen extends React.Component {
     //get the Org's data
     getOrgData = (organization) => {
         this.context.setOrgId(organization._id);
-        console.log(this.context.orgId)
         this.context.setOrgName(organization.name);
-        this.props.navigation.navigate('Organization')
+        this.props.navigation.navigate('Organization');
+
     }
 
     render() {
         return (
-            <View style={{flex:1}}>
+            <View style={{ flex: 1 }}>
                 <View style={styles.backgroundStyle}>
                     <Feather name="search" style={styles.iconStyle} />
                     <TextInput
@@ -67,12 +67,11 @@ class OrganiztionsScreen extends React.Component {
                 </View>
                 <ScrollView>
                     {
-                        // this.state.organizations.map((item) => {
-                            this.state.organizations.filter((value) => {
-                                return value.name.toUpperCase().includes(this.state.filter.toUpperCase());
-                            }).map((item) => {
+                        this.state.organizations.filter((value) => {
+                            return value.name.toUpperCase().includes(this.state.filter.toUpperCase());
+                        }).map((item) => {
                             return (
-                                <Option key={item._id} text={item.name}  onPress={() => { this.getOrgData(item)}}/>
+                                <Option key={item._id} text={item.name} onPress={() => { this.getOrgData(item) }} />
                             )
                         })
                     }
@@ -91,7 +90,7 @@ const styles = StyleSheet.create({
         borderRadius: 5,
         marginHorizontal: 15,
         flexDirection: 'row-reverse',
-        marginBottom:'2.5%'
+        marginBottom: '2.5%'
     },
     inputStyle: {
         flex: 1,

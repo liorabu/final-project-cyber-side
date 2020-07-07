@@ -80,3 +80,13 @@ export async function getOrgDashboard(orgId) {
   let results = { userSystems: await userSystems.length, doneSystems: await doneSystems.length, performedControls: await performedControls.length, userControls: userControls }
   return await results
 }
+
+//load the systems of the user
+export async function getSystems(userId) {
+  const mongoClient = Stitch.defaultAppClient.getServiceClient(RemoteMongoClient.factory, "mongodb-atlas");
+  const db = mongoClient.db("CyberDefence");
+  const systems = db.collection("Systems");
+  const data = await systems.find({ userId: userId });
+  return await data.toArray();
+ 
+}
