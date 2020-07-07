@@ -61,9 +61,7 @@ class OrganiztionsScreen extends React.Component {
                         style={styles.inputStyle}
                         placeholder="Search"
                         value={this.state.filter}
-                        onChangeText={(text) => this.setState({ filter: text })}
-                    // onEndEditing={onTermSubmit}
-                    />
+                        onChangeText={(text) => this.setState({ filter: text })}                    />
                 </View>
                 <ScrollView>
                     {

@@ -90,3 +90,19 @@ export async function getSystems(userId) {
   return await data.toArray();
  
 }
+
+//load some system data 
+export async function getSystem(systemId) {
+  const mongoClient = Stitch.defaultAppClient.getServiceClient(RemoteMongoClient.factory, "mongodb-atlas");
+  const db = mongoClient.db("CyberDefence");
+  const systems = db.collection("Systems");
+  return await systems.findOne({ _id: systemId });
+}
+
+//load performed controls for some system
+export async function getSystemsPerformedControls(systemId) {
+  const mongoClient = Stitch.defaultAppClient.getServiceClient(RemoteMongoClient.factory, "mongodb-atlas");
+  const db = mongoClient.db("CyberDefence");
+  const performed = db.collection("PerformedControls");
+  return await performed.find({systemId: systemId }).toArray();
+}

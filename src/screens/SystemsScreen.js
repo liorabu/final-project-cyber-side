@@ -111,7 +111,6 @@ class SystemsScreen extends React.Component {
 
     render() {
         if (!this.state.isLoading) {
-            console.log("load");
             return (
              
                 <View style={styles.loadingContainer}>
@@ -121,15 +120,13 @@ class SystemsScreen extends React.Component {
             )
         }
         else {
-            console.log("systems");
             return (
                 <ScrollView>
                     <View>
                         {
                             this.state.systems.map((item) => {
                                 return (
-                                    // <TouchableOpacity style={styles.systemContainer} key={item._id} onPress={() => { this.getSystemData(item) }}>
-                                      <TouchableOpacity style={styles.systemContainer} key={item._id}>
+                                    <TouchableOpacity style={styles.systemContainer} key={item._id} onPress={() => { this.getSystemData(item) }}>
                                       <View style={styles.dataStyle}>
                                             <Text style={styles.systemName} >
                                                 שם המערכת: {item.name}
