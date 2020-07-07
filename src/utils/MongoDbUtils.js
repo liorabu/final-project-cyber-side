@@ -106,3 +106,12 @@ export async function getSystemsPerformedControls(systemId) {
   const performed = db.collection("PerformedControls");
   return await performed.find({systemId: systemId }).toArray();
 }
+
+//get user details
+export async function getUserDetails(userId) {
+  const mongoClient = Stitch.defaultAppClient.getServiceClient(RemoteMongoClient.factory, "mongodb-atlas");
+  const db = mongoClient.db("CyberDefence");
+  const users = db.collection("users");
+
+  return await users.findOne({ _id: userId });
+}
