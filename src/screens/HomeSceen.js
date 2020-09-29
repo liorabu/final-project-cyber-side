@@ -53,7 +53,6 @@ class HomeScreen extends React.Component {
             <View style={styles.container}>
             <View>
               <Option text='מפעלים בתהליך' onPress={() => { this.props.navigation.navigate('Organizations') }} />
-              <Option text='הגדרת מפעל חדש' onPress={() => { this.props.navigation.navigate('newOrg') }} />
             </View>
     
             <View style={styles.dashboard}>

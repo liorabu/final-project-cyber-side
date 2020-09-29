@@ -115,12 +115,3 @@ export async function getUserDetails(userId) {
 
   return await users.findOne({ _id: userId });
 }
-
-//create a new organization
-export async function saveNewOrg(name, number, password, beginningDate){
-  const mongoClient = Stitch.defaultAppClient.getServiceClient(RemoteMongoClient.factory, "mongodb-atlas");
-  const db = mongoClient.db("CyberDefence");
-  const users = db.collection("users");
-  const user = {name:name, number:parseInt(number), password:password, beginningDate:beginningDate};
-  return users.insertOne(user);
-}
